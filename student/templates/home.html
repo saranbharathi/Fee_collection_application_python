@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> SIGN IN </title>
+</head>
+<body bgcolor="#AFEEEE">
+<center>
+{%if request.user.is_authenticated%}
+<h1>WELCOME {{request.user.username}} </h1>
+<p>YOUR PENDING FEES {{stu.pending_fee}}</p>
+<a href="/pay/"><button>PROCEED TO PAY</button></a>
+{%else%}
+<h1> SIGN IN </h1>
+<form method="POST">
+{%csrf_token%}
+<b>USER NAME : <input type="text" name="Username" placeholder="Enter Your Email" ></b>
+<br>
+<br>
+<b>PASSWORD : <input type="password" name="Password" placeholder="Enter Password"></b>
+<br>
+<br>
+<input type="submit" value="SIGN IN"><br>
+<br>
+</form>
+</center>
+{%endif%}
+</body>
+</html>
